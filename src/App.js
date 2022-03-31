@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import { ToastContainer } from "react-toastify";
+import ReactGA from "react-ga4";
 import {
     Header,
     About,
@@ -12,6 +13,11 @@ import {
 } from "./components";
 
 const App = () => {
+    useEffect(() => {
+        ReactGA.initialize(process.env.REACT_APP_GA);
+        ReactGA.send("pageview");
+    }, []);
+
     useEffect(() => {
         AOS.init({
             easing: "ease",
